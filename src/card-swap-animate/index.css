@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    vertical-align: center;
+    display: flex;
+}
+
+/* Button */
+.btn-animate {
+    font-size: 2rem;
+    border-radius: .5rem;
+    padding: 1rem;
+}
+
+/* First row of boxes */
+.content {
+    height: 20vh;
+    width: 80%;
+    background-color: rgb(49, 49, 146);
+    display: flex;
+    align-items: space-between;
+    justify-content: space-between;
+    margin: 1rem 0;
+    gap: 2%;
+}
+
+.card-content:nth-child(1) {
+    --rotateX: 15deg;
+    --rotateY: -15deg;
+}
+
+.card-content:nth-child(2) {
+    --rotateX: 15deg;
+    --rotateY: 0;
+}
+
+.card-content:nth-child(3) {
+    --rotateX: 15deg;
+    --rotateY: 15deg;
+}
+
+.card-content {
+    --opacity: 1;
+    --translateX: 0;
+    --translateY: 0;
+    --first-translate-y: 5vh;
+    --second-translate-x: 200px;
+    width: calc(80% / 3);
+    height: 20vh;
+    background-color: white;    
+    border-radius: 1rem;
+    padding: 1rem;
+    transition: transform 250ms, opacity 250ms;
+    opacity: var(--opacity);
+    transform: 
+        rotateX(var(--rotateX))
+        rotateY(var(--rotateY))
+        translateX(var(--translateX))
+        translateY(var(--translateY));
+}
+
+.card-down-animate {
+    opacity: 0;
+    transition: transform 250ms, opacity 250ms;
+    transform: 
+        translateX(0)
+        translateY(var(--first-translate-y));
+}
+
+.card-right-animate {
+    opacity: 1;
+    transform:
+        translateX(var(--second-translate-x))
+        translateY(0);
+}
+
+
+/* Second row of boxes */
+.content2 {
+    height: 20vh;
+    width: 80%;
+    background-color: rgb(49, 49, 146);
+    display: flex;
+    align-items: space-between;
+    justify-content: space-between;
+    margin: 1rem 0;
+    gap: 2%;
+}
+
+
+.card-content2:nth-child(1) {
+    --rotateX: 15deg;
+    --rotateY: -15deg;
+}
+
+.card-content2:nth-child(2) {
+    --rotateX: 15deg;
+    --rotateY: 0;
+}
+
+.card-content2:nth-child(3) {
+    --rotateX: 15deg;
+    --rotateY: 15deg;
+}
+
+.card-content2 {
+    --opacity: 1;
+    --translateX: 0;
+    --translateY: 0;
+    --first-translate-y: 5vh;
+    --second-translate-x: 200px;
+    width: calc(80% / 3);
+    height: 20vh;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    opacity: var(--opacity);
+    transform: 
+        translateX(var(--translateX))
+        translateY(var(--translateY))
+        rotateX(var(--rotateX))
+        rotateY(var(--rotateY))
+    ;
+}
+
+.last-card-motion {
+    animation: last-card-keyframes 250ms ease;
+}
+
+@keyframes last-card-keyframes {
+    /* from {
+        opacity: 1;
+        transform: 
+            translateX(0)
+            translateY(0);
+    } */
+
+    to {
+        opacity: 0;
+        transform: 
+            translateX(0)
+            translateY(5vh);
+    }
+}
+
+.last-card-motion2 {
+    animation: last-card-keyframes2 250ms ease;
+}
+
+@keyframes last-card-keyframes2{
+    from {
+        opacity: 0;
+        transform: 
+            translateX(0)
+            translateY(5vh);
+    }
+
+    /* 65% {
+        opacity: 0.7;
+        transform: 
+            translateX(0)
+            translateY(5vh)
+            rotateX(calc(0.7*var(--rotateX)))
+            rotateY(calc(0.7*var(--rotateY)))
+        ;
+    } */
+
+    to {
+        opacity: 1;
+        transform: 
+            translateX(0)
+            translateY(0)
+            rotateX(var(--rotateX))
+            rotateY(var(--rotateY))
+        ;
+    }
+}
+
+.rest-card-motion {
+    animation: rest-card-keyframes 500ms ease;
+}
+
+@keyframes rest-card-keyframes {
+    from {
+        transform: 
+            translateX(0)
+            rotateX(var(--rotateX))
+            rotateY(var(--prev_rotateY))
+        ;
+    }
+    to {
+        transform: 
+            translateX(var(--second-translate-x))
+            rotateX(var(--rotateX))
+            rotateY(var(--rotateY))
+        ;
+    }
+}
