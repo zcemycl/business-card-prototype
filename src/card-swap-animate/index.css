@@ -204,3 +204,9 @@ body {
         ;
     }
 }
+
+a.home {
+    color: white;
+    text-decoration: none;
+    padding: 2vw;
+}
